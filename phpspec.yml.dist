@@ -1,0 +1,4 @@
+suites:
+    default_suite:
+        namespace: CubicMushroom\Symfony\StripeBundle
+        psr4_prefix: CubicMushroom\Symfony\StripeBundle
