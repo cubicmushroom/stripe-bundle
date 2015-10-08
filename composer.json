@@ -1,0 +1,19 @@
+{
+    "name": "cubicmushroom/stripe-bundle",
+    "description": "Symfony bundle for handling Stripe payments",
+    "type": "library",
+    "require-dev": {
+        "phpspec/phpspec": "^2.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Toby Griffiths",
+            "email": "toby@cubicmushroom.co.uk"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "symfony/form": "^2.7"
+    }
+}
