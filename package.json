@@ -1,0 +1,25 @@
+{
+  "name": "stripe-bundle",
+  "version": "1.0.0",
+  "description": "Symfony Stripe bundle",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cubicmushroom/stripe-bundle.git"
+  },
+  "keywords": [
+    "symfony",
+    "stripe",
+    "payment",
+    "gateway"
+  ],
+  "author": "Toby Griffiths <toby@griffiths>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cubicmushroom/stripe-bundle/issues"
+  },
+  "homepage": "https://github.com/cubicmushroom/stripe-bundle"
+}
