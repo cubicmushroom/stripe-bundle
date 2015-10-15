@@ -5,6 +5,8 @@ namespace CubicMushroom\Symfony\StripeBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 
 /**
  * Class StripeInputType
@@ -58,6 +60,19 @@ class StripeInputType extends AbstractType
                 }
             )
         );
+    }
+
+
+    /**
+     * Strips out the field name so that the data will never be submitted to the server
+     *
+     * @param FormView      $view
+     * @param FormInterface $form
+     * @param array         $options
+     */
+    public function finishView(FormView $view, FormInterface $form, array $options)
+    {
+        throw new \RuntimeException('You have not finished me yet!,  I need to ensure data is not submitted!');
     }
 
 
