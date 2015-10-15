@@ -55,19 +55,19 @@ class StripeTypeSpec extends ObjectBehavior
         FormBuilderInterface $builder
     ) {
         /** @noinspection PhpUndefinedMethodInspection */
-        $builder->add('cardNumber', 'cm_stripe_input', ['stripe-data' => 'number'])
+        $builder->add('cardNumber', 'cm_stripe_input', ['stripe_data' => 'number'])
                 ->shouldBeCalled()
                 ->willreturn($builder);
         /** @noinspection PhpUndefinedMethodInspection */
-        $builder->add('cvc', 'cm_stripe_input', ['stripe-data' => 'cvc', 'label' => 'CVC'])
+        $builder->add('cvc', 'cm_stripe_input', ['stripe_data' => 'cvc', 'label' => 'CVC'])
                 ->shouldBeCalled()
                 ->willreturn($builder);
         /** @noinspection PhpUndefinedMethodInspection */
-        $builder->add('expirationMonth', 'cm_stripe_input', ['stripe-data' => 'exp-month'])
+        $builder->add('expirationMonth', 'cm_stripe_input', ['stripe_data' => 'exp-month'])
                 ->shouldBeCalled()
                 ->willreturn($builder);
         /** @noinspection PhpUndefinedMethodInspection */
-        $builder->add('expirationYear', 'cm_stripe_input', ['stripe-data' => 'exp-year'])
+        $builder->add('expirationYear', 'cm_stripe_input', ['stripe_data' => 'exp-year'])
                 ->shouldBeCalled()
                 ->willreturn($builder);
 
