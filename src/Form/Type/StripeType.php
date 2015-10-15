@@ -40,10 +40,10 @@ class StripeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cardNumber', 'stripe_input', ['stripe-data' => 'number'])
-            ->add('cvc', 'stripe_input', ['stripe-data' => 'cvc', 'label' => 'CVC'])
-            ->add('expirationMonth', 'stripe_month', ['stripe-data' => 'exp-month'])
-            ->add('expirationYear', 'stripe_year', ['stripe-data' => 'exp-year'])
+            ->add('cardNumber', 'cm_stripe_input', ['stripe-data' => 'number'])
+            ->add('cvc', 'cm_stripe_input', ['stripe-data' => 'cvc', 'label' => 'CVC'])
+            ->add('expirationMonth', 'cm_stripe_input', ['stripe-data' => 'exp-month'])
+            ->add('expirationYear', 'cm_stripe_input', ['stripe-data' => 'exp-year'])
         ;
     }
 
