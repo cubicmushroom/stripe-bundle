@@ -7,6 +7,7 @@ use CubicMushroom\Symfony\StripeBundle\Form\Type\StripeType;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
@@ -58,5 +59,34 @@ class StripeTypeSpec extends ObjectBehavior
 
         /** @noinspection PhpUndefinedMethodInspection */
         $resolver->setDefaults(['data_class' => TakePaymentCommand::class])->shouldHaveBeenCalled();
+    }
+
+
+    /**
+     * @uses StripeType::buildForm()
+     */
+    function it_should_add_the_required_fields(
+        /** @noinspection PhpDocSignatureInspection */
+        FormBuilderInterface $builder
+    ) {
+        /** @noinspection PhpUndefinedMethodInspection */
+        $builder->add('cardNumber', 'stripe_input', ['stripe-data' => 'number'])
+                ->shouldBeCalled()
+                ->willreturn($builder);
+        /** @noinspection PhpUndefinedMethodInspection */
+        $builder->add('cvc', 'stripe_input', ['stripe-data' => 'cvc', 'label' => 'CVC'])
+                ->shouldBeCalled()
+                ->willreturn($builder);
+        /** @noinspection PhpUndefinedMethodInspection */
+        $builder->add('expirationMonth', 'stripe_month', ['stripe-data' => 'exp-month'])
+                ->shouldBeCalled()
+                ->willreturn($builder);
+        /** @noinspection PhpUndefinedMethodInspection */
+        $builder->add('expirationYear', 'stripe_year', ['stripe-data' => 'exp-year'])
+                ->shouldBeCalled()
+                ->willreturn($builder);
+
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->buildForm($builder, []);
     }
 }
