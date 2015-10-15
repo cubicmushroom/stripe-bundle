@@ -3,6 +3,7 @@
 namespace spec\CubicMushroom\Symfony\StripeBundle\Form\Type;
 
 use CubicMushroom\Symfony\StripeBundle\Form\Type\StripeInputType;
+use PhpSpec\Exception\Example\PendingException;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Form\AbstractType;
@@ -12,7 +13,7 @@ use Symfony\Component\Form\AbstractType;
  *
  * @package CubicMushroom\Symfony\StripeBundle
  *
- * @see \CubicMushroom\Symfony\StripeBundle\Form\Type\StripeInputType
+ * @see     \CubicMushroom\Symfony\StripeBundle\Form\Type\StripeInputType
  */
 class StripeInputTypeSpec extends ObjectBehavior
 {
@@ -49,5 +50,19 @@ class StripeInputTypeSpec extends ObjectBehavior
     {
         /** @noinspection PhpUndefinedMethodInspection */
         $this->getParent()->shouldReturn('text');
+    }
+
+
+    function it_should_ensure_no_data_is_submitted()
+    {
+        throw new PendingException(
+            'I\'ve added the ViewTransformer to do this in the buildForm() method, so just need to add the test'
+        );
+    }
+
+
+    function it_should_ensure_the_field_name_attribute_is_not_set()
+    {
+        throw new PendingException('Add test for clearing the field\'s name attribute');
     }
 }
