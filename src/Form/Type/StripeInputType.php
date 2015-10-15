@@ -66,13 +66,17 @@ class StripeInputType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->addViewTransformer(
+        /**
+         * This data transformer ensures that no data is submitted with this form field, as it should be protected
+         */
+        $builder->addModelTransformer(
             new CallbackTransformer(
                 function ($originalDescription) {
                     return $originalDescription;
                 },
                 function ($submittedDescription) {
-                    if (!is_null($submittedDescription)) {
+                    $dataSubmitted = !empty($submittedDescription);
+                    if ($dataSubmitted) {
                         throw new \RuntimeException(
                             'Sensitive data has been submitted via you\'re form!!!  This should not happen unless '.
                             "your server is PCI compliant.\n".
