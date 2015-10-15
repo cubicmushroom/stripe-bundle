@@ -70,6 +70,10 @@ class StripeTypeSpec extends ObjectBehavior
         $builder->add('expirationYear', 'cm_stripe_input', ['stripe_data' => 'exp-year'])
                 ->shouldBeCalled()
                 ->willreturn($builder);
+        /** @noinspection PhpUndefinedMethodInspection */
+        $builder->add('stripeToken', 'hidden')
+                ->shouldBeCalled()
+                ->willreturn($builder);
 
         /** @noinspection PhpUndefinedMethodInspection */
         $this->buildForm($builder, []);
