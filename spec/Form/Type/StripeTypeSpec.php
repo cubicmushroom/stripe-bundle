@@ -85,7 +85,7 @@ class StripeTypeSpec extends ObjectBehavior
                 ->shouldBeCalled()
                 ->willreturn($builder);
         /** @noinspection PhpUndefinedMethodInspection */
-        $builder->add('stripeToken', 'hidden')
+        $builder->add('token', 'hidden')
                 ->shouldBeCalled()
                 ->willreturn($builder);
 

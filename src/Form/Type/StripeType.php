@@ -41,7 +41,7 @@ class StripeType extends AbstractType
             ->add('cvc', 'cm_stripe_input', ['stripe_data' => 'cvc', 'label' => 'CVC'])
             ->add('expirationMonth', 'cm_stripe_input', ['stripe_data' => 'exp-month'])
             ->add('expirationYear', 'cm_stripe_input', ['stripe_data' => 'exp-year'])
-            ->add('stripeToken', 'hidden');
+            ->add('token', 'hidden');
     }
 
 
