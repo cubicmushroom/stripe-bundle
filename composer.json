@@ -20,5 +20,16 @@
         "psr-4": {
             "CubicMushroom\\Symfony\\StripeBundle\\": "src/"
         }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "gulp test"
+    ],
+    "post-update-cmd": [
+      "gulp test"
+    ],
+    "pre-archive-cmd": [
+      "gulp test"
+    ]
     }
 }
