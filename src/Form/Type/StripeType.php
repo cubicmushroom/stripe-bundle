@@ -12,6 +12,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  * Class StripeType
  *
  * @package CubicMushroom\Symfony\StripeBundle\Form\Type
+ *
+ * @todo - Add unit tests for this form, as per http://symfony.com/doc/current/cookbook/form/unit_testing.html
  */
 class StripeType extends AbstractType
 {
