@@ -6,6 +6,7 @@
 
   <services>
     <service class="CubicMushroom\Symfony\StripeBundle\Form\Extension\GlobalsExtension" id="cubic_mushroom_symfony_stripe.form_extension.globals_extension">
+      <argument type="string">%cm_stripe.api_public_key%</argument>
       <call method="initRuntime">
         <argument id="twig" type="service"/>
       </call>
