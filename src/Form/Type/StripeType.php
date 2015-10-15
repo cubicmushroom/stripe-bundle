@@ -5,6 +5,9 @@ namespace CubicMushroom\Symfony\StripeBundle\Form\Type;
 use CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommand;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
@@ -28,9 +31,25 @@ class StripeType extends AbstractType
     }
 
 
+    /**
+     * Providing this method for backwards compatibility
+     *
+     * @param OptionsResolverInterface $resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(['data_class' => TakePaymentCommand::class]);
+    }
+
+
+    /**
+     * Configures the options for this type.
+     *
+     * @param OptionsResolver $resolver The resolver for the options.
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $this->setDefaultOptions($resolver);
     }
 
 
@@ -45,4 +64,20 @@ class StripeType extends AbstractType
     }
 
 
+    /**
+     * {@inheritdoc}
+     */
+    public function buildView(FormView $view, FormInterface $form, array $options)
+    {
+        // We need to add the `stripe-form` classs to the top level form, so that we can hijack the form submit buttons
+        $topFormView = $view;
+        while (!is_null($topFormView->parent)) {
+            $topFormView = $topFormView->parent;
+        }
+
+        if (!isset($topFormView->vars['attr']['class'])) {
+            $topFormView->vars['attr']['class'] = '';
+        }
+        $topFormView->vars['attr']['class'] .= 'stripe-form';
+    }
 }
