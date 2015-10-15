@@ -2,8 +2,8 @@
 
 namespace spec\CubicMushroom\Symfony\StripeBundle\Form\Type;
 
+use CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommand;
 use CubicMushroom\Symfony\StripeBundle\Form\Type\StripeType;
-use PhpSpec\Exception\Example\PendingException;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Form\AbstractType;
@@ -48,13 +48,15 @@ class StripeTypeSpec extends ObjectBehavior
     }
 
 
+    /**
+     * @uses StripeType::setDefaultOptions()
+     */
     function it_should_set_defaults(OptionsResolverInterface $resolver)
     {
-        throw new PendingException('Update with defaults');
-        /** @noinspection PhpUndefinedMethodInspection */
-        $resolver->setDefaults(['data_class' => TakeP])->shouldBeCalled();
-
         /** @noinspection PhpUndefinedMethodInspection */
         $this->setDefaultOptions($resolver);
+
+        /** @noinspection PhpUndefinedMethodInspection */
+        $resolver->setDefaults(['data_class' => TakePaymentCommand::class])->shouldHaveBeenCalled();
     }
 }
