@@ -2,7 +2,6 @@
 
 namespace spec\CubicMushroom\Symfony\StripeBundle\Form\Type;
 
-use CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommand;
 use CubicMushroom\Symfony\StripeBundle\Form\Type\StripeType;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -51,14 +50,17 @@ class StripeTypeSpec extends ObjectBehavior
 
     /**
      * @uses StripeType::setDefaultOptions()
+     * @uses StripeType::configureOptions()
      */
-    function it_should_set_defaults(OptionsResolverInterface $resolver)
-    {
+    function it_could_require_stripe_data_option(
+        /** @noinspection PhpDocSignatureInspection */
+        OptionsResolverInterface $resolver
+    ) {
         /** @noinspection PhpUndefinedMethodInspection */
         $this->setDefaultOptions($resolver);
 
         /** @noinspection PhpUndefinedMethodInspection */
-        $resolver->setDefaults(['data_class' => TakePaymentCommand::class])->shouldHaveBeenCalled();
+        $resolver->setRequired(['stripe_data'])->shouldHaveBeenCalled();
     }
 
 
