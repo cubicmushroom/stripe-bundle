@@ -2,8 +2,10 @@
 
 namespace CubicMushroom\Symfony\StripeBundle\Form\Type;
 
+use CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommand;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
 /**
@@ -23,6 +25,12 @@ class StripeType extends AbstractType
     public function getName()
     {
         return 'cm_stripe';
+    }
+
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(['data_class' => TakePaymentCommand::class]);
     }
 
 
