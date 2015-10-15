@@ -45,7 +45,7 @@ class StripeTypeSpec extends ObjectBehavior
     function it_should_return_name()
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $this->getName()->shouldReturn('cm_stripe_stripe');
+        $this->getName()->shouldReturn('cm_stripe');
     }
 
 

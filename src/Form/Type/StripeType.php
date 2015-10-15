@@ -24,7 +24,7 @@ class StripeType extends AbstractType
      */
     public function getName()
     {
-        return 'cm_stripe_stripe';
+        return 'cm_stripe';
     }
 
 
