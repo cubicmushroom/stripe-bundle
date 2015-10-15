@@ -4,13 +4,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <services>
-        <service id="cm_stripe.example" class="CubicMushroom\Symfony\StripeBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service class="CubicMushroom\Symfony\StripeBundle\Form\Type\StripeInputType" id="cubic_mushroom_symfony_stripe.form_type.stripe_input_type">
+            <tag alias="cm_stripe_input" name="form.type"/>
         </service>
     </services>
-    -->
 </container>
