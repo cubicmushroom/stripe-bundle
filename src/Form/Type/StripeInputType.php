@@ -112,7 +112,7 @@ class StripeInputType extends AbstractType
      */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
-        throw new \RuntimeException('You have not finished me yet!,  I need to ensure data is not submitted!');
+        $view->vars['full_name'] = '';
     }
 
 
