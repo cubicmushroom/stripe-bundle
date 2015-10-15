@@ -32,5 +32,8 @@
     <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
+  <component name="ProjectResources">
+    <resource url="http://symfony.com/schema/dic/services" location="" />
+  </component>
   <component name="ProjectRootManager" version="2" />
 </project>
