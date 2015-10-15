@@ -7,6 +7,8 @@ use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Class StripeInputType
@@ -32,6 +34,27 @@ class StripeInputType extends AbstractType
     public function getParent()
     {
         return 'text';
+    }
+
+
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver
+            ->setRequired(['stripe_data']);
+    }
+
+
+    /**
+     * Providing this for forward compatibility with Symfony 3.0
+     *
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $this->setDefaultOptions($resolver);
     }
 
 

@@ -7,7 +7,6 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
 /**
@@ -45,22 +44,6 @@ class StripeTypeSpec extends ObjectBehavior
     {
         /** @noinspection PhpUndefinedMethodInspection */
         $this->getName()->shouldReturn('cm_stripe');
-    }
-
-
-    /**
-     * @uses StripeType::setDefaultOptions()
-     * @uses StripeType::configureOptions()
-     */
-    function it_could_require_stripe_data_option(
-        /** @noinspection PhpDocSignatureInspection */
-        OptionsResolverInterface $resolver
-    ) {
-        /** @noinspection PhpUndefinedMethodInspection */
-        $this->setDefaultOptions($resolver);
-
-        /** @noinspection PhpUndefinedMethodInspection */
-        $resolver->setRequired(['stripe_data'])->shouldHaveBeenCalled();
     }
 
 

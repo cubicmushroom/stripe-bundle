@@ -7,6 +7,7 @@ use PhpSpec\Exception\Example\PendingException;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Class StripeInputTypeSpec
@@ -50,6 +51,22 @@ class StripeInputTypeSpec extends ObjectBehavior
     {
         /** @noinspection PhpUndefinedMethodInspection */
         $this->getParent()->shouldReturn('text');
+    }
+
+
+    /**
+     * @uses StripeType::setDefaultOptions()
+     * @uses StripeType::configureOptions()
+     */
+    function it_could_require_stripe_data_option(
+        /** @noinspection PhpDocSignatureInspection */
+        OptionsResolverInterface $resolver
+    ) {
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->setDefaultOptions($resolver);
+
+        /** @noinspection PhpUndefinedMethodInspection */
+        $resolver->setRequired(['stripe_data'])->shouldHaveBeenCalled();
     }
 
 

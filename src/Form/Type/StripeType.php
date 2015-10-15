@@ -4,8 +4,6 @@ namespace CubicMushroom\Symfony\StripeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
 /**
@@ -25,27 +23,6 @@ class StripeType extends AbstractType
     public function getName()
     {
         return 'cm_stripe';
-    }
-
-
-    /**
-     * @param OptionsResolverInterface $resolver
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver
-            ->setRequired(['stripe_data']);
-    }
-
-
-    /**
-     * Providing this for forward compatibility with Symfony 3.0
-     *
-     * @param OptionsResolver $resolver
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $this->setDefaultOptions($resolver);
     }
 
 
