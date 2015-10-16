@@ -49,24 +49,13 @@ Add the following to your `app/config.yml` file...
 
 ## Load JavaScript library
 
-### Stripe JS file
+### Stripe JS file &amp; API key
 
-Add the following to script tag to your page templates that contain Stripe payment forms...
+Add the following twig function call to your page templates for pages that contain Stripe payment forms...
 
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
-Note from the Stripe website...
-
-To prevent problems with some older browsers, we recommend putting the script tag in the \<head> tag of your page, or as 
-a direct descendant of the \<body> at the end of your page.
-
-
-### Stripe API key
-
-Just below where you added the above script tag, add the following line,which injects your public API key into the page 
-so that the Stripe JavaScript can make use of it...
- 
-    {{ cm_stripe_api_public_key_script }}
+    {{ cm_stripe_api_script() }}
+    
+This injects the Stripe API JavaScript file, along with your public key into the page.
 
 
 ### Bundle JS file
@@ -88,4 +77,31 @@ If using assetic...
 ... or if not using assetic...
 
     <script type="text/javascript" src="/bundles/cmstripe/js/stripe-bundle.js"></script>
+    
+
+## Customising error messages
+
+The error messages displayed by the plugin are attached to the .stripe-errors form element (must be within the related 
+form), which is added to the top of the form if it doesn't already exist.
+
+You can customise the format of these errors using the `StripeBundle.EVENTS.FORMAT_ERROR_MSG` event that's fired on the 
+Stripe form's form tag by using something similar to the following...
+
+    (function ($) {
+        'use strict';
+    
+        //noinspection JSLint,JSUnusedLocalSymbols
+        /**
+         *
+         * @param {Event} event
+         * @param {{errorMessage: string}} errorDetails
+         */
+        function addStripeErrorFormatting(event, errorDetails) {
+            errorDetails.errorMessage = '<div class="alert alert-danger fade in">' + errorDetails.errorMessage + '</div>';
+        }
+    
+        $(function () {
+            $('form.stripe-form').on(StripeBundle.EVENTS.FORMAT_ERROR_MSG, addStripeErrorFormatting);
+        });
+    }(jQuery));
     
