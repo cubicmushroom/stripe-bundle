@@ -39,7 +39,7 @@ class StripeScriptTagsExtension extends \Twig_Extension
      */
     public function getName()
     {
-        return 'cm_stripe.globals';
+        return 'cm_stripe.script_functions';
     }
 
 

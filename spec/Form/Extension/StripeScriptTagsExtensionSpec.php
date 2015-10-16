@@ -55,19 +55,27 @@ class StripeScriptTagsExtensionSpec extends ObjectBehavior
     /**
      * @uses StripeScriptTagsExtension::getName()
      */
-    function its_name_should_be_cm_stripe_globals()
+    function its_name_should_be_cm_stripe_script_functions()
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $this->getName()->shouldReturn('cm_stripe.globals');
+        $this->getName()->shouldReturn('cm_stripe.script_functions');
     }
 
 
-    function it_should_add_globals()
+    /**
+     * @uses StripeScriptTagsExtension::getFunctions()
+     */
+    function it_should_add_the_cm_stripe_api_script_function()
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $this->getGlobals()->shouldReturn([
-            'cm_stripe_api_public_key_script' =>
-                "<script type=\"text/javascript\">Stripe.setPublishableKey('".self::API_PUBLIC_KEY."');</script>",
+        $this->getFunctions()->shouldReturn([
+            'cm_stripe_api_script' => new \Twig_SimpleFunction(
+                'cm_stripe_api_script',
+                function () {
+                    echo '<script type="text/javascript" src="https://js.stripe.com/v2/"></script>'.
+                         "<script type=\"text/javascript\">Stripe.setPublishableKey('{$this->stripePublicKey}');</script>";
+                }
+            )
         ]);
     }
 }
