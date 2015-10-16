@@ -2,19 +2,19 @@
 
 namespace spec\CubicMushroom\Symfony\StripeBundle\Form\Extension;
 
-use CubicMushroom\Symfony\StripeBundle\Form\Extension\GlobalsExtension;
+use CubicMushroom\Symfony\StripeBundle\Form\Extension\StripeScriptTagsExtension;
 use PhpSpec\Exception\Example\ErrorException;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 /**
- * Class GlobalsExtensionSpec
+ * Class StripeScriptTagsExtensionSpec
  *
  * @package CubicMushroom\Symfony\StripeBundle
  *
- * @see \CubicMushroom\Symfony\StripeBundle\Form\Extension\GlobalsExtension
+ * @see \CubicMushroom\Symfony\StripeBundle\Form\Extension\StripeScriptTagsExtension
  */
-class GlobalsExtensionSpec extends ObjectBehavior
+class StripeScriptTagsExtensionSpec extends ObjectBehavior
 {
 
     const API_PUBLIC_KEY = 'pk_test_lUIS2li2d34c2h4sdsdaHIlb';
@@ -28,16 +28,16 @@ class GlobalsExtensionSpec extends ObjectBehavior
 
 
     /**
-     * @uses GlobalsExtension::__construct()
+     * @uses StripeScriptTagsExtension::__construct()
      */
     function it_is_initializable()
     {
-        $this->shouldHaveType(GlobalsExtension::class);
+        $this->shouldHaveType(StripeScriptTagsExtension::class);
     }
 
 
     /**
-     * @uses GlobalsExtension::__construct()
+     * @uses StripeScriptTagsExtension::__construct()
      */
     function it_should_extends_the_twig_extension_class()
     {
@@ -53,7 +53,7 @@ class GlobalsExtensionSpec extends ObjectBehavior
 
 
     /**
-     * @uses GlobalsExtension::getName()
+     * @uses StripeScriptTagsExtension::getName()
      */
     function its_name_should_be_cm_stripe_globals()
     {

@@ -7,7 +7,7 @@ namespace CubicMushroom\Symfony\StripeBundle\Form\Extension;
  *
  * @package CubicMushroom\Symfony\StripeBundle
  *
- * @see     \spec\CubicMushroom\Symfony\StripeBundle\Form\Extension\GlobalsExtensionSpec
+ * @see     \spec\CubicMushroom\Symfony\StripeBundle\Form\Extension\StripeScriptTagsExtensionSpec
  */
 class StripeScriptTagsExtension extends \Twig_Extension
 {
