@@ -12,7 +12,7 @@ use Prophecy\Argument;
  *
  * @package CubicMushroom\Symfony\StripeBundle
  *
- * @see \CubicMushroom\Symfony\StripeBundle\Form\Extension\StripeScriptTagsExtension
+ * @see     \CubicMushroom\Symfony\StripeBundle\Form\Extension\StripeScriptTagsExtension
  */
 class StripeScriptTagsExtensionSpec extends ObjectBehavior
 {
@@ -68,14 +68,44 @@ class StripeScriptTagsExtensionSpec extends ObjectBehavior
     function it_should_add_the_cm_stripe_api_script_function()
     {
         /** @noinspection PhpUndefinedMethodInspection */
-        $this->getFunctions()->shouldReturn([
-            'cm_stripe_api_script' => new \Twig_SimpleFunction(
-                'cm_stripe_api_script',
-                function () {
-                    echo '<script type="text/javascript" src="https://js.stripe.com/v2/"></script>'.
-                         "<script type=\"text/javascript\">Stripe.setPublishableKey('{$this->stripePublicKey}');</script>";
+        $this->getFunctions()->shouldIncludeStripeApiScriptTagExtension();
+    }
+
+
+    // -----------------------------------------------------------------------------------------------------------------
+    // Inline matchers
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * @return array
+     */
+    public function getMatchers()
+    {
+        return [
+            'includeStripeApiScriptTagExtension' => function ($subject) {
+                if (
+                    !is_array($subject) ||
+                    !array_key_exists('cm_stripe_api_script', $subject) ||
+                    !$subject['cm_stripe_api_script'] instanceof \Twig_SimpleFunction
+                ) {
+                    return false;
                 }
-            )
-        ]);
+
+                /** @var \Twig_SimpleFunction $twigFunction */
+                $twigFunction = $subject['cm_stripe_api_script'];
+                $function = $twigFunction->getCallable();
+
+                ob_start();
+                $function();
+                $actualOutput = ob_get_clean();
+
+                $expectedOutput = '<script type="text/javascript" src="https://js.stripe.com/v2/"></script>'.
+                                  "<script type=\"text/javascript\">Stripe.setPublishableKey('".self::API_PUBLIC_KEY.
+                                  "');</script>";
+
+
+                return ($expectedOutput === $actualOutput);
+            },
+        ];
     }
 }
