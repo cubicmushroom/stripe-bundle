@@ -7,7 +7,7 @@
 
   window.StripeBundle = {
     EVENTS: {
-      FORMAT_ERROR_MSG: 'cm_stripe.formatError'
+      FORMAT_ERROR_MSG: 'cm_stripe:formatError'
     }
   };
 
@@ -88,17 +88,17 @@
   StripeForm.prototype.stripeResponseHandler = function (status, response) {
     if (response.error) {
       var errorMessage     = response.error.message,
-          formatErrorEvent = {errorMessage: errorMessage};
+          errorDetails = {errorMessage: errorMessage};
 
       /**
        * Event: StripeBundle.EVENTS.FORMAT_ERROR_MSG
        * Object: {{errorMessage: string}}
        */
-      this.$form.trigger(StripeBundle.EVENTS.FORMAT_ERROR_MSG, formatErrorEvent);
-      errorMessage = formatErrorEvent.errorMessage;
+      this.$form.trigger(StripeBundle.EVENTS.FORMAT_ERROR_MSG, errorDetails);
+      errorMessage = errorDetails.errorMessage;
 
       // Show the errors on the form
-      this.$form.find('.payment-errors').text(errorMessage);
+      this.$form.find('.payment-errors').html(errorMessage);
       this.$form.find('button').prop('disabled', false);
     } else {
       // response contains id and card, which contains additional card details
