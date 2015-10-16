@@ -62,11 +62,15 @@ class StripeInputTypeSpec extends ObjectBehavior
         /** @noinspection PhpDocSignatureInspection */
         OptionsResolverInterface $resolver
     ) {
-        /** @noinspection PhpUndefinedMethodInspection */
-        $this->setDefaultOptions($resolver);
 
         /** @noinspection PhpUndefinedMethodInspection */
-        $resolver->setRequired(['stripe_data'])->shouldHaveBeenCalled();
+        $resolver->setDefaults(['mapped' => false])->shouldBeCalled()->willReturn($resolver);
+        /** @noinspection PhpUndefinedMethodInspection */
+        $resolver->setRequired(['stripe_data'])->shouldBeCalled()->willReturn($resolver);
+
+
+        /** @noinspection PhpUndefinedMethodInspection */
+        $this->setDefaultOptions($resolver);
     }
 
 

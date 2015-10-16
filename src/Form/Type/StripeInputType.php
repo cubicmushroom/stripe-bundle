@@ -43,6 +43,7 @@ class StripeInputType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver
+            ->setDefaults(['mapped' => false])
             ->setRequired(['stripe_data']);
     }
 
