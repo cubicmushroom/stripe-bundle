@@ -9,7 +9,7 @@ namespace CubicMushroom\Symfony\StripeBundle\Form\Extension;
  *
  * @see     \spec\CubicMushroom\Symfony\StripeBundle\Form\Extension\GlobalsExtensionSpec
  */
-class GlobalsExtension extends \Twig_Extension
+class StripeScriptTagsExtension extends \Twig_Extension
 {
     /**
      * @var string
@@ -43,13 +43,19 @@ class GlobalsExtension extends \Twig_Extension
     }
 
 
-    public function getGlobals()
+    /**
+     * {@inheritdoc}
+     */
+    public function getFunctions()
     {
         return [
-            'cm_stripe_api_public_key_script' =>
-                "<script type=\"text/javascript\">Stripe.setPublishableKey('{$this->stripePublicKey}');</script>",
+            'cm_stripe_api_script' => new \Twig_SimpleFunction(
+                'cm_stripe_api_script',
+                function () {
+                    echo '<script type="text/javascript" src="https://js.stripe.com/v2/"></script>'.
+                         "<script type=\"text/javascript\">Stripe.setPublishableKey('{$this->stripePublicKey}');</script>";
+                }
+            ),
         ];
     }
-
-
 }

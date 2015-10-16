@@ -5,7 +5,8 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
   <services>
-    <service class="CubicMushroom\Symfony\StripeBundle\Form\Extension\GlobalsExtension" id="cubic_mushroom_symfony_stripe.form_extension.globals_extension">
+    <service id="cm_stripe.twig.extension.script_tags"
+             class="CubicMushroom\Symfony\StripeBundle\Form\Extension\StripeScriptTagsExtension">
       <argument type="string">%cm_stripe.api_public_key%</argument>
       <call method="initRuntime">
         <argument id="twig" type="service"/>
