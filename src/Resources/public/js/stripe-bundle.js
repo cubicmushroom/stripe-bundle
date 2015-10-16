@@ -97,6 +97,11 @@
       this.$form.trigger(StripeBundle.EVENTS.FORMAT_ERROR_MSG, errorDetails);
       errorMessage = errorDetails.errorMessage;
 
+      // Sanitise the error message to remove HTML tags
+      var sanitizer = $('<div></div>');
+      sanitizer.text(errorMessage);
+      errorMessage = sanitizer.html();
+
       // Show the errors on the form
       this.$form.find('.payment-errors').html(errorMessage);
       this.$form.find('button').prop('disabled', false);
