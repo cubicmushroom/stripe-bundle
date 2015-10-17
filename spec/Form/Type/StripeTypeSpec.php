@@ -2,13 +2,11 @@
 
 namespace spec\CubicMushroom\Symfony\StripeBundle\Form\Type;
 
-use CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommand;
 use CubicMushroom\Symfony\StripeBundle\Form\Type\StripeType;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 
 /**
@@ -46,18 +44,6 @@ class StripeTypeSpec extends ObjectBehavior
     {
         /** @noinspection PhpUndefinedMethodInspection */
         $this->getName()->shouldReturn('cm_stripe');
-    }
-
-
-    function it_links_to_the_take_payment_command(OptionsResolverInterface $resolver)
-    {
-        /** @noinspection PhpUndefinedMethodInspection */
-        $resolver->setDefaults(['data_class' => TakePaymentCommand::class])
-                 ->shouldBeCalled()
-                 ->willReturn($resolver);
-
-        /** @noinspection PhpUndefinedMethodInspection */
-        $this->setDefaultOptions($resolver);
     }
 
 
