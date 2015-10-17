@@ -105,3 +105,8 @@ Stripe form's form tag by using something similar to the following...
         });
     }(jQuery));
     
+
+## TakePaymentCommand form
+
+The bundle provides a form type called `cm_stripe_take_payment`.  This can be used to display a Stripe payment form, 
+along with the other TakePaymentCommand fields.

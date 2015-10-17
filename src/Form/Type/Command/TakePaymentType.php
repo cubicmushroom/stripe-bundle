@@ -58,10 +58,8 @@ class TakePaymentType extends AbstractType
     {
         $builder
             ->add('cost')
-            ->add('stripe_form', 'cm_stripe')
+            ->add('stripe_form', 'cm_stripe', ['inherit_data' => true])
             ->add('description', 'hidden')
             ->add('userEmail', 'email');
     }
-
-
 }
