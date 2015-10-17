@@ -56,7 +56,7 @@ class TakePaymentTypeSpec extends ObjectBehavior
         /** @noinspection PhpUndefinedMethodInspection */
         $builder->add('cost', Argument::cetera())->shouldBeCalled()->willReturn($builder);
         /** @noinspection PhpUndefinedMethodInspection */
-        $builder->add('stripe_form', Argument::cetera())->shouldBeCalled()->willReturn($builder);
+        $builder->add('stripe_form', 'cm_stripe', Argument::cetera())->shouldBeCalled()->willReturn($builder);
         /** @noinspection PhpUndefinedMethodInspection */
         $builder->add('description', Argument::cetera())->shouldBeCalled()->willReturn($builder);
         /** @noinspection PhpUndefinedMethodInspection */
