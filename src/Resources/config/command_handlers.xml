@@ -14,6 +14,7 @@
       <argument id="omnipay.stripe.gateway" type="service"/>
       <argument id="cm_stripe.repository.payment" type="service"/>
       <argument id="logger" type="service"/>
+      <tag name="tactician.handler" command="CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommand"/>
     </service>
   </services>
 </container>
