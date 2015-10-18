@@ -11,9 +11,16 @@
     }
   ],
   "minimum-stability": "stable",
+  "repositories"     : [
+    {
+      "type": "vcs",
+      "url" : "git@github.com:cubicmushroom/value-objects-bundle.git"
+    }
+  ],
   "require"          : {
-    "cubicmushroom/payments-stripe": "^1.0",
-    "symfony/form"                 : "^2.7"
+    "cubicmushroom/value-objects-bundle": "dev-master",
+    "cubicmushroom/payments-stripe"     : "^1.0",
+    "symfony/form"                      : "^2.7"
   },
   "require-dev"      : {
     "symfony/symfony": "^2.3",

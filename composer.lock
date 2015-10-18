@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "af439be8544a20c8b16b33b47ae58cfe",
+    "hash": "53f517ca347e948624a46303ff09e0d0",
     "packages": [
         {
             "name": "cubicmushroom/hexagonal-components",
-            "version": "1.0.0",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cubicmushroom/hexagonal-components.git",
-                "reference": "b46aa6b47d2e87657d386382651457ebedf18e24"
+                "reference": "c8eef8cfa57b9b56f50601f32da58c06987a2b8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cubicmushroom/hexagonal-components/zipball/b46aa6b47d2e87657d386382651457ebedf18e24",
-                "reference": "b46aa6b47d2e87657d386382651457ebedf18e24",
+                "url": "https://api.github.com/repos/cubicmushroom/hexagonal-components/zipball/c8eef8cfa57b9b56f50601f32da58c06987a2b8d",
+                "reference": "c8eef8cfa57b9b56f50601f32da58c06987a2b8d",
                 "shasum": ""
             },
             "require": {
@@ -29,6 +29,11 @@
                 "phpspec/phpspec": "^2.3"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "CubicMushroom\\Hexagonal\\": "src/"
@@ -45,7 +50,7 @@
                 }
             ],
             "description": "Useful elements for implementing hexagonal architecture",
-            "time": "2015-10-15 11:09:59"
+            "time": "2015-10-18 13:24:00"
         },
         {
             "name": "cubicmushroom/payments-stripe",
@@ -92,6 +97,61 @@
             ],
             "description": "Package for handling basic Stripe payment gateway operations",
             "time": "2015-10-15 11:24:53"
+        },
+        {
+            "name": "cubicmushroom/value-objects-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cubicmushroom/value-objects-bundle.git",
+                "reference": "0f10f4427a2fda80a164850ba89862f9dcbc2ade"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cubicmushroom/value-objects-bundle/zipball/0f10f4427a2fda80a164850ba89862f9dcbc2ade",
+                "reference": "0f10f4427a2fda80a164850ba89862f9dcbc2ade",
+                "shasum": ""
+            },
+            "require": {
+                "nicolopignatelli/valueobjects": "^3.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "^2.3",
+                "phpunit/phpunit": "^4.8",
+                "symfony/symfony": "^2.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "CubicMushroom\\Symfony\\ValueObjectsBundle\\": "src/"
+                }
+            },
+            "scripts": {
+                "post-install-cmd": [
+                    "gulp test"
+                ],
+                "post-update-cmd": [
+                    "gulp test"
+                ],
+                "pre-archive-cmd": [
+                    "gulp test"
+                ]
+            },
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Toby Griffiths",
+                    "email": "toby@cubicmushroom.co.uk"
+                }
+            ],
+            "description": "Symfony bundle to integrate value objects from the nicolopignatelli/valueobjects package",
+            "support": {
+                "source": "https://github.com/cubicmushroom/value-objects-bundle/tree/master",
+                "issues": "https://github.com/cubicmushroom/value-objects-bundle/issues"
+            },
+            "time": "2015-10-18 16:19:06"
         },
         {
             "name": "doctrine/annotations",
@@ -1498,16 +1558,16 @@
         },
         {
             "name": "zendframework/zend-stdlib",
-            "version": "2.7.3",
+            "version": "2.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-stdlib.git",
-                "reference": "8ac0c77ff567fcf49b58689ee3bfa7595be102bc"
+                "reference": "cae029346a33663b998507f94962eb27de060683"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/8ac0c77ff567fcf49b58689ee3bfa7595be102bc",
-                "reference": "8ac0c77ff567fcf49b58689ee3bfa7595be102bc",
+                "url": "https://api.github.com/repos/zendframework/zend-stdlib/zipball/cae029346a33663b998507f94962eb27de060683",
+                "reference": "cae029346a33663b998507f94962eb27de060683",
                 "shasum": ""
             },
             "require": {
@@ -1552,7 +1612,7 @@
                 "stdlib",
                 "zf2"
             ],
-            "time": "2015-09-25 04:06:33"
+            "time": "2015-10-15 15:57:32"
         },
         {
             "name": "zendframework/zend-validator",
@@ -2134,7 +2194,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "cubicmushroom/value-objects-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
