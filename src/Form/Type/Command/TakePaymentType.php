@@ -3,8 +3,8 @@
 namespace CubicMushroom\Symfony\StripeBundle\Form\Type\Command;
 
 use CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommand;
-use CubicMushroom\Symfony\StripeBundle\Form\DataTransformer\EmailTransformer;
 use CubicMushroom\Symfony\StripeBundle\Form\DataTransformer\MoneyTransformer;
+use CubicMushroom\Symfony\ValueObjectsBundle\Form\DataTransformer\EmailTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
