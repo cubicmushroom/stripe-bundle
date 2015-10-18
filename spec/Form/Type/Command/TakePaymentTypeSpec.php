@@ -3,7 +3,9 @@
 namespace spec\CubicMushroom\Symfony\StripeBundle\Form\Type\Command;
 
 use CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommand;
+use CubicMushroom\Symfony\StripeBundle\Form\DataTransformer\MoneyTransformer;
 use CubicMushroom\Symfony\StripeBundle\Form\Type\Command\TakePaymentType;
+use CubicMushroom\Symfony\ValueObjectsBundle\Form\DataTransformer\EmailTransformer;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Symfony\Component\Form\AbstractType;
@@ -53,17 +55,35 @@ class TakePaymentTypeSpec extends ObjectBehavior
     }
 
 
-    function it_should_have_fields(FormBuilderInterface $builder)
-    {
+    function it_should_have_fields(
+        FormBuilderInterface $builder,
+        FormBuilderInterface $costBuilder,
+        FormBuilderInterface $emailBuilder
+    ) {
+        // Cost field
         /** @noinspection PhpUndefinedMethodInspection */
-        $builder->add('cost', Argument::cetera())->shouldBeCalled()->willReturn($builder);
+        $builder->create('cost', Argument::cetera())->shouldBeCalled()->willReturn($costBuilder);
+        /** @noinspection PhpParamsInspection */ /** @noinspection PhpUndefinedMethodInspection */
+        $costBuilder->addViewTransformer(Argument::type(MoneyTransformer::class))->willReturn($costBuilder);
+        /** @noinspection PhpUndefinedMethodInspection */
+        $builder->add($costBuilder)->shouldBeCalled()->willReturn($builder);
+
+        // Stripe field
         /** @noinspection PhpUndefinedMethodInspection */
         $builder->add('stripe_form', 'cm_stripe', Argument::withEntry('inherit_data', true))
                 ->shouldBeCalled()->willReturn($builder);
+
+        // Description field
         /** @noinspection PhpUndefinedMethodInspection */
         $builder->add('description', Argument::cetera())->shouldBeCalled()->willReturn($builder);
+
+        // User email field
         /** @noinspection PhpUndefinedMethodInspection */
-        $builder->add('userEmail', Argument::cetera())->shouldBeCalled()->willReturn($builder);
+        $builder->create('userEmail', Argument::cetera())->shouldBeCalled()->willReturn($emailBuilder);
+        /** @noinspection PhpParamsInspection */ /** @noinspection PhpUndefinedMethodInspection */
+        $emailBuilder->addViewTransformer(Argument::type(EmailTransformer::class))->willReturn($emailBuilder);
+        /** @noinspection PhpUndefinedMethodInspection */
+        $builder->add($emailBuilder)->shouldBeCalled()->willReturn($builder);
 
         /** @noinspection PhpUndefinedMethodInspection */
         $this->buildForm($builder, []);
