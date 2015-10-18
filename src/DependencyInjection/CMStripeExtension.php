@@ -64,6 +64,7 @@ class CMStripeExtension extends Extension implements PrependExtensionInterface
         $loader->load('command_handlers.xml');
         $loader->load('forms.xml');
         $loader->load('gateways.xml');
+        $loader->load('repositories.xml');
         $loader->load('services.xml');
         $loader->load('twig_extensions.xml');
     }
