@@ -3,6 +3,7 @@
 namespace CubicMushroom\Symfony\StripeBundle\Form\Type\Command;
 
 use CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommand;
+use CubicMushroom\Symfony\StripeBundle\Form\DataTransformer\EmailTransformer;
 use CubicMushroom\Symfony\StripeBundle\Form\DataTransformer\MoneyTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -58,9 +59,9 @@ class TakePaymentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add($builder->create('cost')->addViewTransformer(new MoneyTransformer()))
+            ->add($builder->create('cost')->addViewTransformer(new MoneyTransformer))
             ->add('stripe_form', 'cm_stripe', ['inherit_data' => true])
             ->add('description', 'hidden')
-            ->add('userEmail', 'email');
+            ->add($builder->create('userEmail', 'email')->addViewTransformer(new EmailTransformer));
     }
 }
