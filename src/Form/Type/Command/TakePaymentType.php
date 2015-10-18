@@ -19,6 +19,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class TakePaymentType extends AbstractType
 {
+    const FORM_STRIPE = 'stripe_form';
+
+
     /**
      * Returns the name of this type.
      *
@@ -63,7 +66,7 @@ class TakePaymentType extends AbstractType
                 $builder->create('cost', 'money', ['currency' => 'GBP', 'grouping' => true])
                         ->addViewTransformer(new MoneyTransformer, true)
             )
-            ->add('stripe_form', 'cm_stripe', ['inherit_data' => true, 'label' => false])
+            ->add(self::FORM_STRIPE, 'cm_stripe', ['inherit_data' => true, 'label' => false])
             ->add('description', 'hidden')
             ->add($builder->create('userEmail', 'email')->addViewTransformer(new EmailTransformer, true));
     }
