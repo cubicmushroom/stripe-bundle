@@ -10,7 +10,6 @@
              factory-class="CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommandHandler"
              factory-method="create">
       <argument id="validator" type="service"/>
-      <argument id="validator" type="service"/>
       <argument id="emitter" type="service"/>
       <argument id="omnipay.stripe.gateway" type="service"/>
       <argument id="cm_stripe.repository.payment" type="service"/>
