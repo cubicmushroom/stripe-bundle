@@ -52,7 +52,7 @@ class MoneyTransformer implements DataTransformerInterface
             return '';
         }
 
-        if ($moneyObject instanceof Money) {
+        if (!$moneyObject instanceof Money) {
             throw new TransformationFailedException(
                 sprintf('Value is expected to be of type \\Money\\Money, but %s given', get_class($moneyObject))
             );
