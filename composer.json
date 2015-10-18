@@ -21,7 +21,7 @@
     "cubicmushroom/value-objects-bundle": "dev-master",
     "cubicmushroom/payments-stripe"     : "^1.0",
     "symfony/form"                      : "^2.7",
-    "doctrine/orm": "^2.4"
+    "doctrine/orm"                      : "^2.4"
   },
   "require-dev"      : {
     "symfony/symfony": "^2.3",
