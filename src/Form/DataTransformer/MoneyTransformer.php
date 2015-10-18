@@ -16,7 +16,7 @@ use Symfony\Component\Form\Exception\TransformationFailedException;
 /**
  * Class MoneyTransformer
  *
- * @package CubicMushroom\Symfony\StripeBundle\Form\DataTransformer
+ * @package CubicMushroom\Symfony\StripeBundle
  */
 class MoneyTransformer implements DataTransformerInterface
 {
