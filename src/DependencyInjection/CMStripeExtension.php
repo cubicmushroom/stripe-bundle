@@ -23,9 +23,12 @@ class CMStripeExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('cm_stripe.api_public_key', $config['api_publishable_key']);
+        $container->setParameter('cm_stripe.api_secret_key', $config['api_secret_key']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('command_handlers.xml');
         $loader->load('forms.xml');
+        $loader->load('gateways.xml');
         $loader->load('services.xml');
         $loader->load('twig_extensions.xml');
     }

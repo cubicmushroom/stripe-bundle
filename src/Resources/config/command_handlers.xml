@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+  <services>
+    <service id="cubic_mushroom.payments.stripe.command.payment.take_payment_command_handler"
+             class="CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommandHandler"
+             factory-method="create">
+      <argument id="validator" type="service"/>
+      <argument id="validator" type="service"/>
+      <argument id="emitter" type="service"/><!--EmitterInterface $emitter-->
+      <argument id="omnipay.stripe.gateway" type="service"/>
+      <argument id="?" type="service"/>PaymentRepositoryInterface $repository,
+      <argument id="logger" type="service"/>
+    </service>
+  </services>
+</container>
