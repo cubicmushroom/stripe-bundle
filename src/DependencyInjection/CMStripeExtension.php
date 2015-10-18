@@ -2,11 +2,11 @@
 
 namespace CubicMushroom\Symfony\StripeBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -15,7 +15,6 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class CMStripeExtension extends Extension implements PrependExtensionInterface
 {
-
 
 
     /**
@@ -29,9 +28,24 @@ class CMStripeExtension extends Extension implements PrependExtensionInterface
         // get all bundles
         $bundles = $container->getParameter('kernel.bundles');
         // determine if AcmeGoodbyeBundle is registered
-        if (!isset($bundles['DoctrineOrmBundle'])) {}
-
-        throw new \RuntimeException('Catch me here');
+        if (isset($bundles['DoctrineBundle'])) {
+            $container->prependExtensionConfig(
+                'doctrine',
+                [
+                    'orm' => [
+                        'mappings' => [
+                            'CMStripeBundle' => [
+                                'type'      => 'xml',
+                                'dir'       => 'Resources/config/doctrine',
+                                'is_bundle' => true,
+                                'prefix'    => 'CubicMushroom\\Payments\\Stripe\\Domain',
+                                'alias'     => 'CMStripe',
+                            ],
+                        ],
+                    ],
+                ]
+            );
+        }
     }
 
 
@@ -41,7 +55,7 @@ class CMStripeExtension extends Extension implements PrependExtensionInterface
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
+        $config        = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('cm_stripe.api_public_key', $config['api_publishable_key']);
         $container->setParameter('cm_stripe.api_secret_key', $config['api_secret_key']);
