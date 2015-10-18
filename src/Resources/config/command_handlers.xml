@@ -7,6 +7,7 @@
   <services>
     <service id="cubic_mushroom.payments.stripe.command.payment.take_payment_command_handler"
              class="CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommandHandler"
+             factory-class="CubicMushroom\Payments\Stripe\Command\Payment\TakePaymentCommandHandler"
              factory-method="create">
       <argument id="validator" type="service"/>
       <argument id="validator" type="service"/>
