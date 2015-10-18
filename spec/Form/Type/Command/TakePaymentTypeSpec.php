@@ -63,14 +63,36 @@ class TakePaymentTypeSpec extends ObjectBehavior
         // Cost field
         /** @noinspection PhpUndefinedMethodInspection */
         $builder->create('cost', 'money', Argument::cetera())->shouldBeCalled()->willReturn($costBuilder);
-        /** @noinspection PhpParamsInspection */ /** @noinspection PhpUndefinedMethodInspection */
+        /** @noinspection PhpParamsInspection */
+        /** @noinspection PhpUndefinedMethodInspection */
         $costBuilder->addViewTransformer(Argument::type(MoneyTransformer::class))->willReturn($costBuilder);
         /** @noinspection PhpUndefinedMethodInspection */
         $builder->add($costBuilder)->shouldBeCalled()->willReturn($builder);
 
         // Stripe field
         /** @noinspection PhpUndefinedMethodInspection */
-        $builder->add('stripe_form', 'cm_stripe', Argument::withEntry('inherit_data', true))
+        $builder->add(
+            'stripe_form',
+            'cm_stripe',
+            Argument::that(
+            /**
+             * Checks expected options
+             */
+                function (array $options) {
+                    $expectedOptions = [
+                        'inherit_data' => true,
+                        'label' => false,
+                    ];
+                    foreach ($expectedOptions as $option => $value) {
+                        if (!isset($options[$option]) || $options[$option] !== $value) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            )
+        )
                 ->shouldBeCalled()->willReturn($builder);
 
         // Description field
@@ -80,7 +102,8 @@ class TakePaymentTypeSpec extends ObjectBehavior
         // User email field
         /** @noinspection PhpUndefinedMethodInspection */
         $builder->create('userEmail', Argument::cetera())->shouldBeCalled()->willReturn($emailBuilder);
-        /** @noinspection PhpParamsInspection */ /** @noinspection PhpUndefinedMethodInspection */
+        /** @noinspection PhpParamsInspection */
+        /** @noinspection PhpUndefinedMethodInspection */
         $emailBuilder->addViewTransformer(Argument::type(EmailTransformer::class))->willReturn($emailBuilder);
         /** @noinspection PhpUndefinedMethodInspection */
         $builder->add($emailBuilder)->shouldBeCalled()->willReturn($builder);
