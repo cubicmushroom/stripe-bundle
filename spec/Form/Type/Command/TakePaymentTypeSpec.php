@@ -62,7 +62,7 @@ class TakePaymentTypeSpec extends ObjectBehavior
     ) {
         // Cost field
         /** @noinspection PhpUndefinedMethodInspection */
-        $builder->create('cost', Argument::cetera())->shouldBeCalled()->willReturn($costBuilder);
+        $builder->create('cost', 'money', Argument::cetera())->shouldBeCalled()->willReturn($costBuilder);
         /** @noinspection PhpParamsInspection */ /** @noinspection PhpUndefinedMethodInspection */
         $costBuilder->addViewTransformer(Argument::type(MoneyTransformer::class))->willReturn($costBuilder);
         /** @noinspection PhpUndefinedMethodInspection */
