@@ -58,7 +58,7 @@ class MoneyTransformer implements DataTransformerInterface
             );
         }
 
-        return $moneyObject->getAmount();
+        return $moneyObject->getAmount() / 100;
     }
 
 
@@ -98,6 +98,6 @@ class MoneyTransformer implements DataTransformerInterface
             );
         }
 
-        return new Money($moneyString, new Currency('GBP'));
+        return new Money((int)$moneyString * 100, new Currency('GBP'));
     }
 }
