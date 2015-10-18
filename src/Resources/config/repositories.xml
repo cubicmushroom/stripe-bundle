@@ -7,7 +7,7 @@
   <services>
     <service id="cm_stripe.repository.payment"
              class="CubicMushroom\Symfony\StripeBundle\Repository\Payment\PaymentRepository"
-             factory-class="Doctrine\ORM\EntityManager"
+             factory-service="doctrine"
              factory-method="getRepository">
       <argument>CubicMushroom\Payments\Stripe\Domain\Payment\Payment</argument>
     </service>
