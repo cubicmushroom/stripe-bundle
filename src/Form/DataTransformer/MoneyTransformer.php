@@ -80,9 +80,9 @@ class MoneyTransformer implements DataTransformerInterface
      * By convention, reverseTransform() should return NULL if an empty string
      * is passed.
      *
-     * @param mixed $moneyString The value in the transformed representation
+     * @param string $moneyString The value in the transformed representation
      *
-     * @return mixed The value in the original representation
+     * @return Money|null The value in the original representation
      *
      * @throws TransformationFailedException When the transformation fails.
      */
