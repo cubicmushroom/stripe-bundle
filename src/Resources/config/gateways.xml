@@ -10,7 +10,9 @@
              factory-class="Omnipay\Omnipay"
              factory-method="create">
       <argument>Stripe</argument>
-      <call method="setApiKey">%cm_stripe.api_secret_key%</call>
+      <call method="setApiKey">
+        <argument>%cm_stripe.api_secret_key%</argument>
+      </call>
     </service>
 
   </services>
