@@ -65,7 +65,7 @@ class TakePaymentTypeSpec extends ObjectBehavior
         $builder->create('cost', 'money', Argument::cetera())->shouldBeCalled()->willReturn($costBuilder);
         /** @noinspection PhpParamsInspection */
         /** @noinspection PhpUndefinedMethodInspection */
-        $costBuilder->addViewTransformer(Argument::type(MoneyTransformer::class))->willReturn($costBuilder);
+        $costBuilder->addViewTransformer(Argument::type(MoneyTransformer::class), true)->willReturn($costBuilder);
         /** @noinspection PhpUndefinedMethodInspection */
         $builder->add($costBuilder)->shouldBeCalled()->willReturn($builder);
 
@@ -104,7 +104,7 @@ class TakePaymentTypeSpec extends ObjectBehavior
         $builder->create('userEmail', Argument::cetera())->shouldBeCalled()->willReturn($emailBuilder);
         /** @noinspection PhpParamsInspection */
         /** @noinspection PhpUndefinedMethodInspection */
-        $emailBuilder->addViewTransformer(Argument::type(EmailTransformer::class))->willReturn($emailBuilder);
+        $emailBuilder->addViewTransformer(Argument::type(EmailTransformer::class), true)->willReturn($emailBuilder);
         /** @noinspection PhpUndefinedMethodInspection */
         $builder->add($emailBuilder)->shouldBeCalled()->willReturn($builder);
 

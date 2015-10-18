@@ -61,10 +61,10 @@ class TakePaymentType extends AbstractType
         $builder
             ->add(
                 $builder->create('cost', 'money', ['currency' => 'GBP', 'grouping' => true])
-                        ->addViewTransformer(new MoneyTransformer)
+                        ->addViewTransformer(new MoneyTransformer, true)
             )
             ->add('stripe_form', 'cm_stripe', ['inherit_data' => true, 'label' => false])
             ->add('description', 'hidden')
-            ->add($builder->create('userEmail', 'email')->addViewTransformer(new EmailTransformer));
+            ->add($builder->create('userEmail', 'email')->addViewTransformer(new EmailTransformer, true));
     }
 }
