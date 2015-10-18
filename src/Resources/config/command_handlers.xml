@@ -10,9 +10,9 @@
              factory-method="create">
       <argument id="validator" type="service"/>
       <argument id="validator" type="service"/>
-      <argument id="emitter" type="service"/><!--EmitterInterface $emitter-->
+      <argument id="emitter" type="service"/>
       <argument id="omnipay.stripe.gateway" type="service"/>
-      <argument id="?" type="service"/>PaymentRepositoryInterface $repository,
+      <argument id="cm_stripe.repository.payment" type="service"/>
       <argument id="logger" type="service"/>
     </service>
   </services>
