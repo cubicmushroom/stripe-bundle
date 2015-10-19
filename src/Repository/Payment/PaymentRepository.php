@@ -51,6 +51,42 @@ class PaymentRepository extends EntityRepository implements PaymentRepositoryInt
      */
     public function markAsPaid(Payment $payment)
     {
-        throw new \RuntimeException('Finish me');
+        $connection = $this->getConnection();
+        $table      = $this->getTableName();
+
+        try {
+            $connection->update(
+                $table,
+                ['paid' => true, 'gateway_id' => $payment->getGatewayId()],
+                ['id' => $payment->id()]
+            );
+        } catch (\Exception $exception) {
+            throw SavePaymentFailedException::createWithPayment(
+                $payment,
+                sprintf('Unable to mark payment #%s as paid', $payment->id()),
+                0,
+                $exception
+            );
+        }
+    }
+
+
+    /**
+     * @return Connection
+     */
+    protected function getConnection()
+    {
+        return $this->getEntityManager()->getConnection();
+    }
+
+
+    /**
+     * @return \Doctrine\ORM\EntityManager
+     */
+    protected function getTableName()
+    {
+        $em = $this->getEntityManager();
+
+        return $em->getClassMetadata($this->getEntityName())->getTableName();
     }
 }
