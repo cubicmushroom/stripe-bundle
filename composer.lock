@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "11adafaa34c13fb814c53a171f307aa9",
+    "hash": "139777af5d278801e1b074547065fba4",
     "packages": [
         {
             "name": "cubicmushroom/hexagonal-components",
@@ -54,16 +54,16 @@
         },
         {
             "name": "cubicmushroom/payments-stripe",
-            "version": "1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cubicmushroom/payments-stripe.git",
-                "reference": "fa66e594adb4e12c44a67943aff1e10bbde408b9"
+                "reference": "fae630362a142a29c98c5b6e5abfa9a9cf960c49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cubicmushroom/payments-stripe/zipball/fa66e594adb4e12c44a67943aff1e10bbde408b9",
-                "reference": "fa66e594adb4e12c44a67943aff1e10bbde408b9",
+                "url": "https://api.github.com/repos/cubicmushroom/payments-stripe/zipball/fae630362a142a29c98c5b6e5abfa9a9cf960c49",
+                "reference": "fae630362a142a29c98c5b6e5abfa9a9cf960c49",
                 "shasum": ""
             },
             "require": {
@@ -85,7 +85,17 @@
                     "CubicMushroom\\Payments\\Stripe\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "post-install-cmd": [
+                    "gulp test"
+                ],
+                "post-update-cmd": [
+                    "gulp test"
+                ],
+                "pre-archive-cmd": [
+                    "gulp test"
+                ]
+            },
             "license": [
                 "ISC"
             ],
@@ -96,7 +106,11 @@
                 }
             ],
             "description": "Package for handling basic Stripe payment gateway operations",
-            "time": "2015-10-15 11:24:53"
+            "support": {
+                "source": "https://github.com/cubicmushroom/payments-stripe/tree/master",
+                "issues": "https://github.com/cubicmushroom/payments-stripe/issues"
+            },
+            "time": "2015-10-19 01:10:22"
         },
         {
             "name": "cubicmushroom/value-objects-bundle",
@@ -2464,9 +2478,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
-        "cubicmushroom/value-objects-bundle": 20
+        "cubicmushroom/value-objects-bundle": 20,
+        "cubicmushroom/payments-stripe": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

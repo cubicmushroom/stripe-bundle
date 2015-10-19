@@ -10,8 +10,12 @@
       "email": "toby@cubicmushroom.co.uk"
     }
   ],
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "repositories"     : [
+    {
+      "type": "vcs",
+      "url" : "git@github.com:cubicmushroom/payments-stripe.git"
+    },
     {
       "type": "vcs",
       "url" : "git@github.com:cubicmushroom/value-objects-bundle.git"
@@ -19,7 +23,7 @@
   ],
   "require"          : {
     "cubicmushroom/value-objects-bundle": "dev-master",
-    "cubicmushroom/payments-stripe"     : "^1.0",
+    "cubicmushroom/payments-stripe"     : "dev-master",
     "symfony/form"                      : "^2.7",
     "doctrine/orm"                      : "^2.4",
     "league/tactician-bundle": "^0.3.0"
