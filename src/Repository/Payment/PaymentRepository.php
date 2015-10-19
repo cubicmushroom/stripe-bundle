@@ -12,6 +12,7 @@ use CubicMushroom\Payments\Stripe\Domain\Payment\Payment;
 use CubicMushroom\Payments\Stripe\Domain\Payment\PaymentId;
 use CubicMushroom\Payments\Stripe\Domain\Payment\PaymentRepositoryInterface;
 use CubicMushroom\Payments\Stripe\Exception\Domain\Payment\SavePaymentFailedException;
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -33,7 +34,11 @@ class PaymentRepository extends EntityRepository implements PaymentRepositoryInt
      */
     public function savePaymentBeforeProcessing(Payment $payment)
     {
-        throw new \RuntimeException('Finish me');
+        $em = $this->getEntityManager();
+        $em->persist($payment);
+        $em->flush($payment);
+
+        return new PaymentId($payment->getId());
     }
 
 
