@@ -11,6 +11,7 @@ namespace CubicMushroom\Symfony\StripeBundle\Repository\Payment;
 use CubicMushroom\Payments\Stripe\Domain\Payment\Payment;
 use CubicMushroom\Payments\Stripe\Domain\Payment\PaymentId;
 use CubicMushroom\Payments\Stripe\Domain\Payment\PaymentRepositoryInterface;
+use CubicMushroom\Payments\Stripe\Exception\Domain\Payment\CreatePaymentFailedException;
 use CubicMushroom\Payments\Stripe\Exception\Domain\Payment\SavePaymentFailedException;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
@@ -30,13 +31,17 @@ class PaymentRepository extends EntityRepository implements PaymentRepositoryInt
      *
      * @return PaymentId
      *
-     * @throws SavePaymentFailedException
+     * @throws CreatePaymentFailedException
      */
     public function savePaymentBeforeProcessing(Payment $payment)
     {
-        $em = $this->getEntityManager();
-        $em->persist($payment);
-        $em->flush($payment);
+        try {
+            $em = $this->getEntityManager();
+            $em->persist($payment);
+            $em->flush($payment);
+        } catch (\Exception $e) {
+            throw CreatePaymentFailedException::createWithPayment($payment, 'Unable to create payment record');
+        }
 
         return new PaymentId($payment->getId());
     }
