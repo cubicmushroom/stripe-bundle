@@ -1,49 +1,49 @@
 {
-  "name"             : "cubicmushroom/stripe-bundle",
-  "description"      : "Symfony bundle for handling Stripe payments",
-  "version"          : "1.0.x-dev",
-  "type"             : "library",
-  "license"          : "MIT",
-  "authors"          : [
-    {
-      "name" : "Toby Griffiths",
-      "email": "toby@cubicmushroom.co.uk"
-    }
-  ],
-  "minimum-stability": "stable",
-  "repositories"     : [
-    {
-      "type": "vcs",
-      "url" : "git@github.com:cubicmushroom/payments-stripe.git"
+    "name":              "cubicmushroom/stripe-bundle",
+    "description":       "Symfony bundle for handling Stripe payments",
+    "version":           "1.0.x-dev",
+    "type":              "library",
+    "license":           "MIT",
+    "authors":           [
+        {
+            "name":  "Toby Griffiths",
+            "email": "toby@cubicmushroom.co.uk"
+        }
+    ],
+    "minimum-stability": "stable",
+    "repositories":      [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:cubicmushroom/payments-stripe.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "git@github.com:cubicmushroom/value-objects-bundle.git"
+        }
+    ],
+    "require":           {
+        "cubicmushroom/value-objects-bundle": "dev-master",
+        "cubicmushroom/payments-stripe":      "dev-master",
+        "symfony/framework-bundle":           "^2.7",
+        "league/tactician-bundle":            "~1.0@dev"
     },
-    {
-      "type": "vcs",
-      "url" : "git@github.com:cubicmushroom/value-objects-bundle.git"
+    "require-dev":       {
+        "phpspec/phpspec": "^2.3"
+    },
+    "autoload":          {
+        "psr-4": {
+            "CubicMushroom\\Symfony\\StripeBundle\\": "src/"
+        }
+    },
+    "scripts":           {
+        "post-install-cmd": [
+            "gulp test"
+        ],
+        "post-update-cmd":  [
+            "gulp test"
+        ],
+        "pre-archive-cmd":  [
+            "gulp test"
+        ]
     }
-  ],
-  "require"          : {
-    "cubicmushroom/value-objects-bundle": "dev-master",
-    "cubicmushroom/payments-stripe"     : "dev-master",
-    "symfony/framework-bundle"          : "^2.7",
-    "league/tactician-bundle"           : "~1.0@dev"
-  },
-  "require-dev"      : {
-    "phpspec/phpspec": "^2.3"
-  },
-  "autoload"         : {
-    "psr-4": {
-      "CubicMushroom\\Symfony\\StripeBundle\\": "src/"
-    }
-  },
-  "scripts"          : {
-    "post-install-cmd": [
-      "gulp test"
-    ],
-    "post-update-cmd" : [
-      "gulp test"
-    ],
-    "pre-archive-cmd" : [
-      "gulp test"
-    ]
-  }
 }
