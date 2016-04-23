@@ -1,48 +1,48 @@
 {
-    "name":              "cubicmushroom/stripe-bundle",
-    "description":       "Symfony bundle for handling Stripe payments",
-    "version":           "0.0.0",
-    "type":              "library",
-    "license":           "MIT",
-    "authors":           [
+    "name": "cubicmushroom/stripe-bundle",
+    "description": "Symfony bundle for handling Stripe payments",
+    "version": "1.0.0",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
         {
-            "name":  "Toby Griffiths",
+            "name": "Toby Griffiths",
             "email": "toby@cubicmushroom.co.uk"
         }
     ],
     "minimum-stability": "stable",
-    "repositories":      [
+    "repositories": [
         {
             "type": "vcs",
-            "url":  "git@github.com:cubicmushroom/payments-stripe.git"
+            "url": "git@github.com:cubicmushroom/payments-stripe.git"
         },
         {
             "type": "vcs",
-            "url":  "git@github.com:cubicmushroom/value-objects-bundle.git"
+            "url": "git@github.com:cubicmushroom/value-objects-bundle.git"
         }
     ],
-    "require":           {
+    "require": {
         "cubicmushroom/value-objects-bundle": "^2.7",
-        "cubicmushroom/payments-stripe":      "^1.0",
-        "symfony/framework-bundle":           "^2.7",
-        "league/tactician-bundle":            "~1.0@dev"
+        "cubicmushroom/payments-stripe": "^1.0",
+        "symfony/framework-bundle": "^2.7",
+        "league/tactician-bundle": "~1.0@dev"
     },
-    "require-dev":       {
+    "require-dev": {
         "phpspec/phpspec": "^2.3"
     },
-    "autoload":          {
+    "autoload": {
         "psr-4": {
             "CubicMushroom\\Symfony\\StripeBundle\\": "src/"
         }
     },
-    "scripts":           {
+    "scripts": {
         "post-install-cmd": [
             "gulp test"
         ],
-        "post-update-cmd":  [
+        "post-update-cmd": [
             "gulp test"
         ],
-        "pre-archive-cmd":  [
+        "pre-archive-cmd": [
             "gulp test"
         ]
     }
