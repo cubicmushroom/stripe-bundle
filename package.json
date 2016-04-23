@@ -1,7 +1,7 @@
 {
   "name": "stripe-bundle",
-  "version": "0.0.0",
   "description": "Symfony Stripe bundle",
+  "version": "1.0.x-dev",
   "main": "gulpfile.js",
   "scripts": {
     "test": "gulp test"
