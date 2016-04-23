@@ -22,8 +22,8 @@
         }
     ],
     "require":           {
-        "cubicmushroom/value-objects-bundle": "dev-master",
-        "cubicmushroom/payments-stripe":      "dev-master",
+        "cubicmushroom/value-objects-bundle": "^2.7",
+        "cubicmushroom/payments-stripe":      "^1.0",
         "symfony/framework-bundle":           "^2.7",
         "league/tactician-bundle":            "~1.0@dev"
     },
