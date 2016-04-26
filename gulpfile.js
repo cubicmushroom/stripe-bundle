@@ -1,6 +1,5 @@
-var gulp = require('./gulp/loader')([]),
-    phpspecTasks = require('gulp-cm-phpspec-tasks'),
-    versionTasks = require('./gulp/version-tasks');
+var gulp = require('./gulp/loader')(['release']),
+    phpspecTasks = require('gulp-cm-phpspec-tasks');
 
 var namespace = 'CubicMushroom\\Symfony\\StripeBundle\\';
 
@@ -14,8 +13,3 @@ phpspecTasks.addTasks(gulp, namespace);
 // Testing tasks
 // -----------------------------------------------------------------------------------------------------------------
 gulp.task('test', ['phpspec']);
-
-// -----------------------------------------------------------------------------------------------------------------
-// Versioning tasks
-// -----------------------------------------------------------------------------------------------------------------
-versionTasks.addTasks();
