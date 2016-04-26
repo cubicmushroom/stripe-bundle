@@ -46,5 +46,10 @@
         "pre-archive-cmd": [
             "gulp test"
         ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "2.7.x-dev"
+        }
     }
 }
