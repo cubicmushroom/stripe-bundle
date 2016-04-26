@@ -24,9 +24,10 @@
     ],
     "require": {
         "cubicmushroom/value-objects-bundle": "^2.7",
-        "cubicmushroom/payments-stripe": "^1.0",
+        "cubicmushroom/payments-stripe": "^1.1.1",
         "symfony/framework-bundle": "^2.7",
-        "league/tactician-bundle": "^1.0@dev"
+        "league/tactician-bundle": "^1.0@dev",
+        "doctrine/orm": "^2.5"
     },
     "require-dev": {
         "phpspec/phpspec": "^2.3"
@@ -46,5 +47,10 @@
         "pre-archive-cmd": [
             "gulp test"
         ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "2.7.x-dev"
+        }
     }
 }

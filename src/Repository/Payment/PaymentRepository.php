@@ -49,7 +49,7 @@ class PaymentRepository extends EntityRepository implements PaymentRepositoryInt
          * $id field is automatically updated by Doctrine ORM
          */
 
-        return $payment->id();
+        return $payment;
     }
 
 
