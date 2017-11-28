@@ -1,7 +1,6 @@
 {
     "name": "cubicmushroom/stripe-bundle",
     "description": "Symfony bundle for handling Stripe payments",
-    "version": "2.7.2",
     "type": "library",
     "license": "MIT",
     "authors": [
