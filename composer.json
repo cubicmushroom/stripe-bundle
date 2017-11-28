@@ -1,7 +1,6 @@
 {
     "name": "cubicmushroom/stripe-bundle",
     "description": "Symfony bundle for handling Stripe payments",
-    "version": "2.7.2",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -23,7 +22,7 @@
         }
     ],
     "require": {
-        "cubicmushroom/value-objects-bundle": "^2.7",
+        "cubicmushroom/value-objects-bundle": "~2.7.1",
         "cubicmushroom/payments-stripe": "^1.1.1",
         "symfony/framework-bundle": "^2.7",
         "league/tactician-bundle": "^1.0@dev",
